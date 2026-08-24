@@ -1,15 +1,27 @@
-from tkinter import*
-from tkinter import messagebox
-window=Tk()
-window.title("Events")
-window.geometry("100x100")
-def key(event):
-    print(event.char)
-window.bind("<Key>",key)
-def handle(event):
-    print("Button was clicked")
-    messagebox.showinfo("Alert","Virus Detected")
-button=Button(text="Click Me")
-button.pack()
-button.bind("<Button-1>",handle)
-window.mainloop()
+from tkinter import *
+
+root = Tk()
+
+root.title("Numberpad")
+
+root.geometry("250x300")
+
+nums=[[9,8,7],[6,5,4],[3,2,1],['#',0,'*']]
+
+for i in range(4):
+
+    root.columnconfigure(i, weight=1,minsize=75)
+
+    root.rowconfigure(i, weight=1,minsize=50)
+
+    for j in range(0,3):
+
+        frame=Frame(master=root, relief=SUNKEN, borderwidth=1)
+
+        frame.grid(row=i, column=j)
+
+        label=Label(master=frame, text=nums[i][j],bg="yellow")
+
+        label.pack(padx=5, pady=5)
+
+root.mainloop()
